@@ -1,0 +1,16 @@
+sdfw:
+  consumer-header:
+    location: QVI
+    party-id: AF
+  ws:
+    - id: w000039.v1
+      url: https://ws-qvi-rct.airfrance.fr/it/businesssupport/000039v01
+
+tecc:
+  supervision:
+    echo: 1500
+
+logging:
+  level:
+    root: INFO
+    '[com.afklm.tecc.supervision]': DEBUG
