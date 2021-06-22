@@ -57,10 +57,10 @@ public class Supervisor implements EmbeddedValueResolverAware {
      * We will supervise all public method from the com.afklm.tecc.supervision.service
      * package.
      */
-    @Pointcut("execution(* com.afklm.tecc.supervision.service.*.*(..))")
+    @Pointcut("execution(* mgu.spring.supervision.service.*.*(..))")
     private void selectPublicServiceMethods(){}
 
-    @Pointcut("execution(* com.afklm.tecc.supervision.service.*.*(..))")
+    @Pointcut("execution(* mgu.spring.supervision.service.*.*(..))")
     private void selectAllServiceMethods(){}
 
     /**
@@ -70,6 +70,7 @@ public class Supervisor implements EmbeddedValueResolverAware {
      */
     @Before("selectPublicServiceMethods()")
     public void loggingServiceCall(JoinPoint joinPoint){
+        System.err.println("MGU");
         History history = new History();
         history.setMethodName(joinPoint.getSignature().toShortString());
         int updatedRows = repo.incrementInvocation(history.getMethodName());
