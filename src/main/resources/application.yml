@@ -1,3 +1,7 @@
 mgu:
   supervision:
     echo: 1500
+
+logging:
+  level:
+    mgu.spring.supervision: DEBUG

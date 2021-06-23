@@ -37,8 +37,8 @@ public class Supervisor implements EmbeddedValueResolverAware {
 
             if (maxDuration != -1 && duration > maxDuration) {
                 //Logger logger = LoggerFactory.getLogger(joinPoint.getTarget().getClass());
-                //logger.warn("TECC/SE >>> The '{}' process took too long: {} ms instead of {} ms", supervision.serviceName(), duration, maxDuration);
-                LOGGER.error("TECC/SE >>> The '{}' process took too long: {} ms instead of {} ms", supervised.serviceName(), duration, maxDuration);
+                //logger.warn("MGU >>> The '{}' process took too long: {} ms instead of {} ms", supervision.serviceName(), duration, maxDuration);
+                LOGGER.error("MGU >>> The '{}' process took too long: {} ms instead of {} ms", supervised.serviceName(), duration, maxDuration);
             }
         }
     }
