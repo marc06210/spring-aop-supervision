@@ -8,7 +8,7 @@ The code here demonstrate how we can monitor some biz services without injecting
 
 ## Check method duration
 
-Method is supervised using **@Supervised** annotation. See example in **MyCustomService**
+Method is supervised using **@Supervised** annotation. See example usage in **MyCustomService**
 
 Threshold delay that triggers the generation of a log entry is the mgu.supervision.echo property (it matches the value injected into the **@Supervised** annotation).
 
@@ -24,10 +24,15 @@ Generated log is then
 
 # Count method invocations
 
+Monitored services are **MyCustomService** and **BunchOfServices**.
+
+Stats are saved into a **H2** database.
 
 
-Supervised services are **MyCustomService** and **BunchOfServices**.
+| invoked URL | MyCustomService.doTheJob() | BunchOfServices.serviceA() | BunchOfServices.serviceB() |
+|-------------|----------------------------|----------------------------|----------------------------|
+| http://localhost:8080/echo?msg=what | invocations 1 **(+1)** - errors 0 | invocations 0 - errors 0 | invocations 0 - errors 0 |
+| http://localhost:8080/serviceAB?msg=what | invocations 1 - errors 0 | invocations 1 **(+1)** - errors 0 | invocations 1 **(+1)** - errors 0 |
+| http://localhost:8080/serviceAB?msg=exception | invocations 1 - errors 0 | invocations 2 **(+1)** - errors 0 | invocations 2 **(+1)** - errors 1 **(+1)** |
 
 
-
-Monitored functions  is defined through a custom annotation
