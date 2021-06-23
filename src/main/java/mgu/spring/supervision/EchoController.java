@@ -16,8 +16,8 @@ public class EchoController {
     }
 
     @GetMapping("/echo")
-    public String echo(@RequestParam("msg") String message) {
-        return service.doTheJob(message);
+    public String echo(@RequestParam("msg") String message, @RequestParam(name="delay") Long delay) {
+        return service.doTheJob(message, delay);
     }
 
     /**

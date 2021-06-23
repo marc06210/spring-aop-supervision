@@ -69,8 +69,7 @@ public class Supervisor implements EmbeddedValueResolverAware {
      * @param joinPoint
      */
     @Before("selectPublicServiceMethods()")
-    public void loggingServiceCall(JoinPoint joinPoint){
-        System.err.println("MGU");
+    public void loggingServiceCall(JoinPoint joinPoint) {
         History history = new History();
         history.setMethodName(joinPoint.getSignature().toShortString());
         int updatedRows = repo.incrementInvocation(history.getMethodName());

@@ -18,8 +18,13 @@ public class MyCustomService {
      * @param message a message to echo
      * @return
      */
-    @Supervised(serviceName="echo", maxDurationInMillis="${tecc.supervision.echo}")
-    public String doTheJob(String message) {
+    @Supervised(serviceName="echo", maxDurationInMillis="${mgu.supervision.echo}")
+    public String doTheJob(String message, Long delay) {
+        if(delay>0) {
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) { }
+        }
         return services.serviceC(message);
     }
 }
